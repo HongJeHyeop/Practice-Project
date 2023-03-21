@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://kit.fontawesome.com/31019ea24a.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<table border="1" th:border="1">
+    <thead>
+    <tr>
+        <td>serialNumber</td>
+        <td>cpu</td>
+        <td>ram</td>
+        <td>ssd</td>
+        <td>vga</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="com, i : ${computers}">
+        <td th:text="${com.getSerialNumber()}"/>
+        <td th:text="${com.getCpu()}"/>
+        <td th:text="${com.getRam()}"/>
+        <td th:text="${com.getSsd()}"/>
+        <td th:text="${com.getVga()}"/>
+    </tr>
+    </tbody>
+</table>
+<form th:action="@{/com}">
+    <input type="text" th:name="serialNumber">
+    <input type="submit">
+</form>
+</body>
+</html>

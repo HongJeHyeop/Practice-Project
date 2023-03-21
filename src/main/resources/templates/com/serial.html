@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://kit.fontawesome.com/31019ea24a.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<table>
+    <tr>
+        <td>serialNumber</td>
+        <td>cpu</td>
+        <td>ram</td>
+        <td>ssd</td>
+        <td>vga</td>
+    </tr>
+    <tr>
+        <td th:text="${serialNumber}"></td>
+        <td th:text="${cpu}"></td>
+        <td th:text="${ram}"></td>
+        <td th:text="${ssd}"></td>
+        <td th:text="${vga}"></td>
+    </tr>
+</table>
+</body>
+</html>

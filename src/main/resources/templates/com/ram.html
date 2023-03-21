@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+<head>
+    <meta charset="UTF-8">
+    <meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}">
+    <title>Title</title>
+    <script src="https://kit.fontawesome.com/31019ea24a.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<table border="1" th:border="1">
+    <thead>
+    <tr>
+        <td>serialNumber</td>
+        <td>cpu</td>
+        <td>ram</td>
+        <td>ssd</td>
+        <td>vga</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="vo, i : ${vos}">
+        <td th:text="${vo.getSerialNumber()}"/>
+        <td th:text="${vo.getCpu()}"/>
+        <td th:text="${vo.getRam()}"/>
+        <td th:text="${vo.getSsd()}"/>
+        <td th:text="${vo.getVga()}"/>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
