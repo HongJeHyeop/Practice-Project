@@ -38,7 +38,12 @@
 </html>
 <script>
     const getAllBtn = document.getElementById('get-all').querySelector('input[type=button]');
+    const getSerialBtn = document.getElementById('get-computer').querySelector('input[type=button]');
+    const getRamBtn = document.getElementById('get-ram').querySelector('input[type=button]');
     const result = document.getElementById('result');
+    const serialInput = getSerialBtn.previousElementSibling;
+    const ramInput = getRamBtn.previousElementSibling;
+
     getAllBtn.onclick = () => {
         const request = new XMLHttpRequest();
         request.open('GET', '/api');
@@ -47,20 +52,54 @@
         request.onload = () => {
             // 응답받은 내용을 자바스크립트 객체 형태로 변환해서 가져온다
             const datas = JSON.parse(request.responseText)
-            result.innerHTML = '';
-            for (let i = 0; i < datas.length; i++) {
-                datas[i]
-                result.insertAdjacentHTML('beforeend',
-                    `<p>
+            creat_data(datas);
+            // 응답받은 내용을 출력해본다.
+            console.log(request.response);
+        };
+    }
+
+    getSerialBtn.onclick = () => {
+        if(serialInput.value.trim() === ''){
+            alert('적으세요')
+            return;
+        }
+        fetch(`/api/${serialInput.value.trim()}}`)
+            .then(response => response.json())
+            .then(value => {
+                creat_data([value]);
+            })
+            .catch(reason => {
+                console.log(reason);
+            })
+    }
+
+    getRamBtn.onclick = () => {
+        if(ramInput.value.trim() === ''){
+            alert('입력!!!!!!')
+            return
+        }
+        fetch(`/api/ram?key=${ramInput.value.trim()}`)
+            .then(response => response.json())
+            .then(value => {
+                creat_data(value);
+            })
+            .catch(reason => {
+                console.log(reason);
+            })
+
+    }
+
+    function creat_data(datas) {
+        result.innerHTML = '';
+        for (let i = 0; i < datas.length; i++) {
+            result.insertAdjacentHTML('beforeend',
+                `<p>
                         <span>${datas[i].serialNumber}</span><br/>
                         <span>${datas[i].cpu}</span><br/>
                         <span>${datas[i].ram}</span><br/>
                         <span>${datas[i].ssd}</span><br/>
                         <span>${datas[i].vga}</span><br/>
                     </p>`)
-            }
-            // 응답받은 내용을 출력해본다.
-            console.log(request.response);
-        };
+        }
     }
 </script>
