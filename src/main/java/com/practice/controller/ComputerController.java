@@ -33,6 +33,8 @@ public class ComputerController {
     @GetMapping("/ram")
     public void get_computer_by_ram(@RequestParam String key, Model model) {
         model.addAttribute("vos", computerMapper.get_computer_by_ram(key));
+        log.info("get_computer_by_ram>>>>>>>>>>>>>>>>>>>>>>" + key);
+        log.info("model >>>>>>>>>" + computerMapper.get_computer_by_ram(key));
     }
 
 

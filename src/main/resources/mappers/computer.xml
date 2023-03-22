@@ -9,7 +9,7 @@
     <select id="get_computer_by_serialName" resultType="com.practice.domain.ComputerVO" >
         SELECT * FROM `web_db`.`computer_tbl` WHERE `serialNumber` = #{serialNumber}
     </select>
-    <select id="get_computer_by_ram" resultType="com.practice.domain.ComputerVO">
+    <select id="get_computer_by_ram" resultType="com.practice.domain.ComputerVO" >
         SELECT * FROM `web_db`.`computer_tbl` WHERE `ram` = #{ram}
     </select>
 
